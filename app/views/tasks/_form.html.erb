@@ -1,0 +1,20 @@
+<% if @task.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+        
+            <h2><%= pluralize(@task.errors.count, "error") %></h2>
+            <ul>
+                <% for err in @task.errors %>
+                    <li><%= err.full_message%></li>
+                <% end %>
+            <ul>
+        
+    </div>
+<% end %>
+
+<%= form_with model: @task do |f|%>
+    <%= f.label :title%>
+    <%= f.text_field :title%>
+    <%= f.label :description%>
+    <%= f.text_area :description%>
+    <%= f.submit 'Create'%>
+<% end %>

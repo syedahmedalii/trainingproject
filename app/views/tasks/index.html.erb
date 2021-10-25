@@ -1,0 +1,66 @@
+<div class="container mt-5">
+    <%= link_to "New Task", new_task_path%>
+    <% if user_signed_in? %>
+                    <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+
+        <% else %>
+            <%= link_to "Sign In", new_user_session_path %>
+                        <%= link_to "Sign Up", new_user_registration_path %>
+
+
+    <% end %>
+    
+    
+
+    <% if @tasks  %>
+      <% for p in @tasks %>
+        
+        <% if p.user_id == @currentUser %>
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-8">
+                    <div class="d-flex flex-column comment-section">
+
+                        <div class="bg-white p-2">
+                            <h2>Task <%= p.id%> </h2>
+                            <h3> <%= link_to p.title, "tasks/#{p.id}"%> </h3>
+                            <div class="mt-2">
+                                <p class="comment-text"><%= p.description%> </p>
+                            </div>
+                        </div>
+                    <small><%= time_ago_in_words(p.created_at) %></small>
+
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        
+
+      <% end %>
+    <% end %>
+
+        <% if @parent_task  %>
+        <h4>Reviewing Tasks</h4>
+      <% for p in @parent_task %>
+        
+            <div class="d-flex justify-content-center row">
+                <div class="col-md-8">
+                    <div class="d-flex flex-column comment-section">
+
+                        <div class="bg-white p-2">
+                            <h2>Task <%= p.id%> </h2>
+                            <h3> <%= link_to p.title, "tasks/#{p.id}"%> </h3>
+                            <div class="mt-2">
+                                <p class="comment-text"><%= p.description%> </p>
+                            </div>
+                        </div>
+                    <small><%= time_ago_in_words(p.created_at) %></small>
+
+                    </div>
+                </div>
+            </div>
+        
+
+      <% end %>
+    <% end %>
+    
+</div>

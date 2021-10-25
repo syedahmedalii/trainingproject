@@ -1,0 +1,5 @@
+<% if @task.activities %>
+    <% for item in @task.activities %>
+      <p><%= item.body%></p>
+    <% end %>
+  <% end %>
