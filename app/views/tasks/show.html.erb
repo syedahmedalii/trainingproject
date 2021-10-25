@@ -14,9 +14,7 @@
         <% if @id_arr %>
             <h4>Already Added</h4>
             <% for item in @id_arr %>
-                <%# <%=link_to "#{item[0]}", messages_path(guest_email: item[0]) %> %>
-                                <%=link_to "#{item[0]}", messages_path , method: localStorage.setItem(guest_email, item[0])%>
-
+                <%=link_to "#{item[0]}", messages_path(guest_email: item[0]) %>
             <% end %>
         <% end %>
     
